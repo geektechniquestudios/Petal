@@ -1,5 +1,16 @@
 from moviepy.editor import *
 import math
+import ffmpeg
+
+
+def normalize_resolutions(vid, i):
+    (
+        ffmpeg
+            .input("../input-videos/" + vid)
+            .output("../conformed-videos/" + str(i) + "-conformed.mp4", s="480x360")
+            .overwrite_output()
+            .run()
+    )
 
 
 def create_clips(vid: VideoFileClip):
@@ -29,4 +40,3 @@ def lace_clips(clips_list):
     for i in range(len(clips_list[0])):
         temp_list.extend([clips_list[0][i], clips_list[1][i]])
     return temp_list
-
