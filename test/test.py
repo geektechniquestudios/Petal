@@ -3,7 +3,7 @@ from src.ClipManager import *
 
 # test1 : cut vid in half and stick it back together switched
 def test1(clip):
-    part1 = clip.subclip(0, clip.duration / 2)
+    part1: VideoClip = clip.subclip(0, clip.duration / 2)
     part2 = clip.subclip(clip.duration / 2, clip.duration)
 
     finished_video = concatenate_videoclips([part2, part1])
@@ -19,7 +19,6 @@ def test2(__clip1, __clip2):
 clip1 = VideoFileClip("../input-videos/clip1.mp4")
 clip2 = VideoFileClip("../input-videos/clip2.mp4")
 clip3 = VideoFileClip("../input-videos/clip3.mp4")
-
 
 test1(clip1)
 test2(clip3, clip2)

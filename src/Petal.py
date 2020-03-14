@@ -3,17 +3,17 @@ import os
 import logging
 
 
-clips_arr = []
+clips_list = []
 
 try:
-    for vid in os.listdir("../input-videos"):  # gets all videos from folder and adds them to array
-        clips_arr.append(create_clips(VideoFileClip("../input-videos/" + vid)))
+    for vid in os.listdir("../input-videos"):  # gets all videos from folder and adds them to list
+        clips_list.append(create_clips(VideoFileClip("../input-videos/" + vid)))
 except Exception as e:
     logging.exception(e)
 
-clips_arr = homogenize(clips_arr)
+clips_list = homogenize(clips_list)
 
-laced_clips = lace_clips(clips_arr)  # array becomes one-dimensional
+laced_clips = lace_clips(clips_list)  # list becomes one-dimensional
 
 
 finished_video = concatenate_videoclips(laced_clips)
