@@ -10,11 +10,15 @@ start_time = time.time()  # for testing optimization
 
 # delete temp videos from prev run. Should go at end, but causes but
 for vid in os.listdir("../conformed-videos/"):
+    if vid == ".gitignore":
+        continue
     os.remove("../conformed-videos/" + vid)
 
 try:
     i = 0
     for vid in os.listdir("../input-videos/"):  # makes a copy of each video the same resolution, can be configured in ClipManager
+        if vid == ".gitignore":
+            continue
         normalize_resolutions(vid, i)
         # gets all videos from folder, cuts them into pieces, and adds them to list
         clips_list\
