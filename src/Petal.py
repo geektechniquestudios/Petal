@@ -13,8 +13,8 @@ try:
     for vid in os.listdir("../input-videos/"):  # makes a copy of each video the same resolution, can be configured in ClipManager
         normalize_resolutions(vid, i)
         i += 1
-    for vid in os.listdir("../input-videos/"):  # gets all videos from folder, cuts them into pieces, and adds them to list
-        clips_list.append(create_clips(VideoFileClip("../input-videos/" + vid)))  # clips_list is 2d list; each index conntains the pieces of one video
+    for vid in os.listdir("../conformed-videos/"):  # gets all videos from folder, cuts them into pieces, and adds them to list
+        clips_list.append(create_clips(VideoFileClip("../conformed-videos/" + vid)))  # clips_list is 2d list; each index conntains the pieces of one video
 except Exception as e:
     logging.exception(e)
 
