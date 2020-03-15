@@ -4,7 +4,7 @@ import logging
 
 clips_list = []
 
-delete temp videos from prev run. Should go at end, but causes but
+# delete temp videos from prev run. Should go at end, but causes but
 for vid in os.listdir("../conformed-videos/"):
     os.remove("../conformed-videos/" + vid)
 
