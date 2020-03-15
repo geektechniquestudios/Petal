@@ -16,11 +16,14 @@ def normalize_resolutions(vid, i):
 
 
 def create_clips(vid: VideoFileClip):
-    #vid.resize((480, 360))  # doesn't seem to work
     num_clips = math.ceil(vid.duration / 10)
     clips_list = []
     for x in range(num_clips):
-        clips_list.append(vid.subclip(vid.duration / num_clips * x, vid.duration / num_clips * (x + 1)))
+        clips_list \
+            .append(
+                vid.subclip(
+                    vid.duration / num_clips * x,
+                    vid.duration / num_clips * (x + 1)))
     return clips_list
 
 
@@ -39,5 +42,8 @@ def homogenize(clips_list):
 def lace_clips(clips_list):
     temp_list = []
     for i in range(len(clips_list[0])):
-        temp_list.extend([clips_list[0][i], clips_list[1][i]])
+        temp_list \
+            .extend(
+                [clips_list[0][i],
+                    clips_list[1][i]])
     return temp_list
