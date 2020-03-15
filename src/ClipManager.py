@@ -2,18 +2,21 @@ from moviepy.editor import *
 import math
 import ffmpeg
 
+RESOLUTION = "480x360"  # "1920x1080"
+
 
 def normalize_resolutions(vid, i):
     (
         ffmpeg
             .input("../input-videos/" + vid)
-            .output("../conformed-videos/" + str(i) + "-conformed.mp4", s="480x360")
+            .output("../conformed-videos/" + str(i) + "-conformed.mp4", s=RESOLUTION)
             .overwrite_output()
             .run()
     )
 
 
 def create_clips(vid: VideoFileClip):
+    #vid.resize((480, 360))  # doesn't seem to work
     num_clips = math.ceil(vid.duration / 10)
     clips_list = []
     for x in range(num_clips):
@@ -25,13 +28,11 @@ def homogenize(clips_list):
     while len(clips_list) > 2:
         clips_list[1] = clips_list[0] + clips_list[1]
         clips_list.pop(0)
-
     while len(clips_list[0]) != len(clips_list[1]):  # make 2 same length
         if len(clips_list[0]) > len(clips_list[1]):
             clips_list[0].pop(-1)
         else:
             clips_list[1].pop(-1)
-
     return clips_list
 
 
