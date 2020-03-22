@@ -1,12 +1,15 @@
 from src.ClipManager import *
+from src.ContentFetching import *
 import os
 import logging
 import time
 
+
+# get_vids_from_links([])
+
 clips_list = []
 
-
-start_time = time.time()  # for testing optimization
+start_time = time.time()  # for testing decoding and rendering optimization
 
 # delete temp videos from prev run. Should go at end, but causes but
 for vid in os.listdir("../conformed-videos/"):
@@ -34,4 +37,4 @@ laced_clips = lace_clips(clips_list)  # list becomes one-dimensional as 2 stacks
 concatenate_videoclips(laced_clips)\
     .write_videofile("../vid-to-upload/vid_to_upload.mp4")  # should have name generated based on tags from source videos
 
-print("--- %s seconds ---" % (time.time() - start_time))
+print("--- video generated in %s seconds ---" % (time.time() - start_time))

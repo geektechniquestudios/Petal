@@ -8,10 +8,10 @@ RESOLUTION = "480x360"  # "1920x1080"
 def normalize_resolutions(vid, i):
     (
         ffmpeg
-            .input("../input-videos/" + vid)
-            .output("../conformed-videos/" + str(i) + "-conformed.mp4", s=RESOLUTION)
-            .overwrite_output()
-            .run()
+        .input("../input-videos/" + vid)
+        .output("../conformed-videos/" + str(i) + "-conformed.mp4", s=RESOLUTION)
+        .overwrite_output()
+        .run()
     )
 
 
